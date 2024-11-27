@@ -1,4 +1,4 @@
-package jdbc;
+package assignment4;
 
 import java.sql.Date;
 
@@ -6,7 +6,7 @@ public class Employee implements Comparable<Employee> {
 	
 	private int empno;
 	private String ename;
-	private String Job;
+	private String job;
 	private int mgr;
 	private Date hiredate;
 	private float sal;
@@ -16,7 +16,7 @@ public class Employee implements Comparable<Employee> {
 		super();
 		this.empno = empno;
 		this.ename = ename;
-		Job = job;
+		this.job = job;
 		this.mgr = mgr;
 		this.hiredate = hiredate;
 		this.sal = sal;
@@ -40,11 +40,11 @@ public class Employee implements Comparable<Employee> {
 	}
 
 	public String getJob() {
-		return Job;
+		return job;
 	}
 
 	public void setJob(String job) {
-		Job = job;
+		this.job = job;
 	}
 
 	public int getMgr() {
@@ -81,14 +81,23 @@ public class Employee implements Comparable<Employee> {
 
 	@Override
 	public String toString() {
-		return "Employee [empno=" + empno + ", ename=" + ename + ", Job=" + Job + ", mgr=" + mgr + ", hiredate="
+		return "Employee [empno=" + empno + ", ename=" + ename + ", Job=" + job + ", mgr=" + mgr + ", hiredate="
 				+ hiredate + ", sal=" + sal + ", deptno=" + deptno + "]";
 	}
 
 	@Override
-	public int compareTo(Employee o) {
-		// here diff between this and o
-		return 0;
+	public int compareTo(Employee obj) {
+		// here diff between this and obj
+		
+		if(this.sal > obj.sal) {
+			return -1;
+		}
+		else if(this.sal < obj.sal){
+			return 1;
+		}
+		else {
+			return this.empno - obj.empno;
+		}
 	}
 	
 	
